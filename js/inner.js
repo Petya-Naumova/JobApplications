@@ -10,6 +10,8 @@ function JobOffer(id, title, description, requirements, address){
  var  RoRDeveloper = new JobOffer(2, "RoR Developer", "We are looking for developers with good skills in Ruby and Ruby on Rails to join our team.", "Ruby, Ruby on Rails", "Sofia");
  var  GameDeveloper = new JobOffer(3,"Game Developer", "Game Developer needed ASAP", "Action Script 3, HTML5/CSS3", "Sofia top location");
  JobOffersContainer.push(WebDeveloper,RoRDeveloper,GameDeveloper);
+
+ var ApplicantsContainer = [];
 function Applicant(id, name, email, experience){
 	this.id = id;
 	this.name = name;
@@ -22,6 +24,8 @@ function Applicant(id, name, email, experience){
 var Olga = new Applicant(1, "Olga", "olga@gmail.com", "2 years");
 var Petya = new Applicant(2, "Petya", "petya@gmail.com", "2 years and a half");
 var Bilyana = new Applicant(3, "Bilyana", "bilyana@abv.bg", "less than a year");
+ApplicantsContainer.push(Olga, Petya, Bilyana);
+
 
 window.addEventListener("load", function(){
 	var JobOffersList = document.getElementById("JobOffersList");
@@ -41,4 +45,16 @@ window.addEventListener("load", function(){
 		button.textContent = "Apply";
 		buttonCell.appendChild(button);
 	}
+	var JobApplicants = document.getElementById("JobApplicants");
+	for (var i=0; i<ApplicantsContainer.length;i++ ) {
+		var addRow = JobApplicants.insertRow(-1);
+		var nameCell = addRow.insertCell(-1);
+		nameCell.innerHTML = ApplicantsContainer[i].name;
+		var emailCell = addRow.insertCell(-1);
+		emailCell.innerHTML = ApplicantsContainer[i].email;
+		var experienceCell = addRow.insertCell(-1);
+		experienceCell.innerHTML = ApplicantsContainer[i].experience;
+
+		
+	};
 })
