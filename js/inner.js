@@ -10,7 +10,6 @@ function JobOffer(id, title, description, requirements, address){
  var  RoRDeveloper = new JobOffer(2, "RoR Developer", "We are looking for developers with good skills in Ruby and Ruby on Rails to join our team.", "Ruby, Ruby on Rails", "Sofia");
  var  GameDeveloper = new JobOffer(3,"Game Developer", "GameDeveloper needed ASAP", "Action Script 3, HTML5/CSS3", "Sofia top location");
  JobOffersContainer.push(WebDeveloper,RoRDeveloper,GameDeveloper);
- console.log(JobOffersContainer);
 function Applicant(id, name, email, experience){
 	this.id = id;
 	this.name = name;
@@ -25,5 +24,18 @@ var Petya = new Applicant(2, "Petya", "petya@gmail.com", "2 years and a half");
 var Bilyana = new Applicant(3, "Bilyana", "bilyana@abv.bg", "less than a year");
 
 window.addEventListener("load", function(){
-	
+	var JobOffersList = document.getElementById("JobOffersList");
+	for(var i=0;i<JobOffersContainer.length;i++){
+		var newRow = JobOffersList.insertRow(-1);
+		var TitleCell = newRow.insertCell(-1);
+		TitleCell.innerHTML = JobOffersContainer[i].title;
+		var descriptionCell = newRow.insertCell(-1);
+		descriptionCell.innerHTML = JobOffersContainer[i].description;
+		var requirementsCell = newRow.insertCell(-1);
+		requirementsCell.innerHTML = JobOffersContainer[i].requirements;
+		var addressCell = newRow.insertCell(-1);
+		addressCell.innerHTML = JobOffersContainer[i].address;
+
+
+	}
 })
