@@ -8,7 +8,7 @@ function JobOffer(id, title, description, requirements, address){
 }
  var  WebDeveloper = new JobOffer(1, "Web Developer", "A person with 1+ years of experience in Web development", "CSS3, HTML 5, LESS/SASS, JS", "Sofia city");
  var  RoRDeveloper = new JobOffer(2, "RoR Developer", "We are looking for developers with good skills in Ruby and Ruby on Rails to join our team.", "Ruby, Ruby on Rails", "Sofia");
- var  GameDeveloper = new JobOffer(3,"Game Developer", "GameDeveloper needed ASAP", "Action Script 3, HTML5/CSS3", "Sofia top location");
+ var  GameDeveloper = new JobOffer(3,"Game Developer", "Game Developer needed ASAP", "Action Script 3, HTML5/CSS3", "Sofia top location");
  JobOffersContainer.push(WebDeveloper,RoRDeveloper,GameDeveloper);
 function Applicant(id, name, email, experience){
 	this.id = id;
@@ -35,7 +35,10 @@ window.addEventListener("load", function(){
 		requirementsCell.innerHTML = JobOffersContainer[i].requirements;
 		var addressCell = newRow.insertCell(-1);
 		addressCell.innerHTML = JobOffersContainer[i].address;
-
-
+		var buttonCell = newRow.insertCell(-1);
+		var button = document.createElement("button");
+		button.setAttribute("class", "btn btn-info");
+		button.textContent = "Apply";
+		buttonCell.appendChild(button);
 	}
 })
