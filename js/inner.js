@@ -33,8 +33,21 @@ window.addEventListener("load", function(){
         var JobApplicantsListTable = document.getElementById("JobApplicants");
         while(JobApplicantsListTable.rows.length!=1){
         JobApplicantsListTable.deleteRow(1);
+
     };
-	var JobApplicants = document.getElementById("JobApplicants");
+
+	 var formRow = JobApplicants.insertRow(JobApplicants.rows.length);
+            /*var formCell = formRow.insertCell(-1);
+            var createForm = document.createElement('form');
+            createForm.setAttribute("method", 'post');
+            var input = document.createElement('input');
+            input.setAttribute("type", 'text');
+            input.setAttribute("name", "username");
+            var submitButton = document.createElement("button");
+            submitButton.setAttribute("type", 'button');
+            submitButton.setAttribute("value", 'Add New Applicant');
+            formRow.appendChild(createForm);*/
+        
 	for (var i=0; i<ApplicantsContainer.length;i++ ) {
 		var addRow = JobApplicants.insertRow(-1);
 		var nameCell = addRow.insertCell(-1);
@@ -46,7 +59,7 @@ window.addEventListener("load", function(){
         var buttonCell = addRow.insertCell(-1);
         var button = document.createElement("button");
         button.setAttribute("class", "btn btn-info");
-        button.textContent = "X";
+        button.textContent = "Click to Remove";
         buttonCell.appendChild(button);
         button.ApplicantID = ApplicantsContainer[i].id;
         button.addEventListener("click", function(){
@@ -61,8 +74,9 @@ window.addEventListener("load", function(){
                 ConstructTableApplicants();
             }
         });
-
-
+        
+           
+       
 		
 	};
 };function ConstructTableOffers(){
