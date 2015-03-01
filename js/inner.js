@@ -28,29 +28,7 @@ ApplicantsContainer.push(Olga, Petya, Bilyana);
 
 
 window.addEventListener("load", function(){
-	function ConstructTableOffers(){
-        var JobOfferListTable = document.getElementById("JobOffersList");
-        while(JobOfferListTable.rows.length!=1){
-        JobOfferListTable.deleteRow(1);
-    };
-	var JobOffersList = document.getElementById("JobOffersList");
-	for(var i=0;i<JobOffersContainer.length;i++){
-		var newRow = JobOffersList.insertRow(-1);
-		var TitleCell = newRow.insertCell(-1);
-		TitleCell.innerHTML = JobOffersContainer[i].title;
-		var descriptionCell = newRow.insertCell(-1);
-		descriptionCell.innerHTML = JobOffersContainer[i].description;
-		var requirementsCell = newRow.insertCell(-1);
-		requirementsCell.innerHTML = JobOffersContainer[i].requirements;
-		var addressCell = newRow.insertCell(-1);
-		addressCell.innerHTML = JobOffersContainer[i].address;
-		var buttonCell = newRow.insertCell(-1);
-		var button = document.createElement("button");
-		button.setAttribute("class", "btn btn-info");
-		button.textContent = "Apply";
-		buttonCell.appendChild(button);
-	}
-};
+	
 	function ConstructTableApplicants(){
         var JobApplicantsListTable = document.getElementById("JobApplicants");
         while(JobApplicantsListTable.rows.length!=1){
@@ -65,9 +43,50 @@ window.addEventListener("load", function(){
 		emailCell.innerHTML = ApplicantsContainer[i].email;
 		var experienceCell = addRow.insertCell(-1);
 		experienceCell.innerHTML = ApplicantsContainer[i].experience;
+        var buttonCell = addRow.insertCell(-1);
+        var button = document.createElement("button");
+        button.setAttribute("class", "btn btn-info");
+        button.textContent = "X";
+        buttonCell.appendChild(button);
+        button.ApplicantID = ApplicantsContainer[i].id;
+        button.addEventListener("click", function(){
+            var ItemToRemove = false;
+            for(var i=0; i<ApplicantsContainer.length; i++){
+                if (this.ApplicantID == ApplicantsContainer[i].id){
+                    ItemToRemove = i;
+                }
+            }
+            if (ItemToRemove !== false){
+                ApplicantsContainer.splice(ItemToRemove, 1);
+                ConstructTableApplicants();
+            }
+        });
+
 
 		
 	};
+};function ConstructTableOffers(){
+        var JobOfferListTable = document.getElementById("JobOffersList");
+        while(JobOfferListTable.rows.length!=1){
+        JobOfferListTable.deleteRow(1);
+    };
+    var JobOffersList = document.getElementById("JobOffersList");
+    for(var i=0;i<JobOffersContainer.length;i++){
+        var newRow = JobOffersList.insertRow(-1);
+        var TitleCell = newRow.insertCell(-1);
+        TitleCell.innerHTML = JobOffersContainer[i].title;
+        var descriptionCell = newRow.insertCell(-1);
+        descriptionCell.innerHTML = JobOffersContainer[i].description;
+        var requirementsCell = newRow.insertCell(-1);
+        requirementsCell.innerHTML = JobOffersContainer[i].requirements;
+        var addressCell = newRow.insertCell(-1);
+        addressCell.innerHTML = JobOffersContainer[i].address;
+        var buttonCell = newRow.insertCell(-1);
+        var button = document.createElement("button");
+        button.setAttribute("class", "btn btn-info");
+        button.textContent = "Apply";
+        buttonCell.appendChild(button);
+    };
 };
 ConstructTableApplicants();
 ConstructTableOffers();
