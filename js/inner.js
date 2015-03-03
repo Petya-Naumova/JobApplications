@@ -62,12 +62,20 @@ window.addEventListener("load", function(){
             }
             if (ItemToRemove !== false){
                 ApplicantsContainer.splice(ItemToRemove, 1);
+                selectApplicant();
                 ConstructTableApplicants();
+                ConstructTableOffers();
             }
         });
 	};
+};
+
     function selectApplicant(){
         var select = document.getElementById("applicantDropDown");
+        while(select.options.length !== 0) {
+        select.remove(0); 
+        }
+
         for(var i=0; i<ApplicantsContainer.length;i++){
             var opt = document.createElement('option');
             opt.value = ApplicantsContainer[i].id;
@@ -78,9 +86,7 @@ window.addEventListener("load", function(){
             ConstructTableOffers();
         });
     };
-    selectApplicant();
-};
-
+   
 function ConstructTableOffers(){
     var JobOfferListTable = document.getElementById("JobOffersList");
     while(JobOfferListTable.rows.length!=1){
@@ -125,12 +131,16 @@ function ConstructTableOffers(){
                     }
                 }
                 Applicant.ApplyForJob(JobOffer);
-
+                document.getElementById('systemMessage').innerHTML = Applicant.name + " has applied for " + JobOffer.title;
+                setTimeout(function(){
+                    document.getElementById('systemMessage').innerHTML = "";
+                }, 1000);
                 ConstructTableOffers();
             });
         }
     };
 };
+selectApplicant();
 ConstructTableApplicants();
 ConstructTableOffers();
 })
