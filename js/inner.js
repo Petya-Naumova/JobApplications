@@ -17,7 +17,9 @@ function Applicant(id, name, email, experience){
 	this.name = name;
 	this.email = email;
 	this.experience = experience;
-	this.apply = function(){
+    this.ChoosenJobs = [];
+	this.ApplyForJob = function(JobOfferInstance){
+        this.ChoosenJobs.push(JobOfferInstance.id);
 
 	}
 }
@@ -62,17 +64,29 @@ window.addEventListener("load", function(){
                 ConstructTableApplicants();
             }
         });
-        
-           
-       
-		
 	};
-};function ConstructTableOffers(){
+    function selectApplicant(){
+        var select = document.getElementById("applicantDropDown");
+        for(var i=0; i<ApplicantsContainer.length;i++){
+            var opt = document.createElement('option');
+            opt.value = ApplicantsContainer[i].id;
+            opt.innerHTML = ApplicantsContainer[i].name;
+            select.appendChild(opt);
+        }
+        //select.addEventListener("change", function(){
+        //    alert("Hello");
+       // });
+    };
+    selectApplicant();
+};
+
+function ConstructTableOffers(){
         var JobOfferListTable = document.getElementById("JobOffersList");
         while(JobOfferListTable.rows.length!=1){
         JobOfferListTable.deleteRow(1);
     };
     var JobOffersList = document.getElementById("JobOffersList");
+    
     for(var i=0;i<JobOffersContainer.length;i++){
         var newRow = JobOffersList.insertRow(-1);
         var TitleCell = newRow.insertCell(-1);
@@ -88,6 +102,28 @@ window.addEventListener("load", function(){
         button.setAttribute("class", "btn btn-info");
         button.textContent = "Apply";
         buttonCell.appendChild(button);
+        button.id = JobOffersContainer[i].id;
+        button.addEventListener("click", function(){
+            var select = document.getElementById("applicantDropDown");
+            var ApplicantID = parseInt(select.value, 10);
+            var JobOfferID = parseInt(this.id, 10);
+            // first, we must find an applicant from Applicants array by giving it an ID
+            var Applicant;
+            for(var i=0; i< ApplicantsContainer.length;i++){
+                if(ApplicantsContainer[i].id === ApplicantID){
+                    Applicant = ApplicantsContainer[i];
+                    break;
+                }
+            }
+            var JobOffer;
+            for(var i=0; i<JobOffersContainer.length;i++){
+                if(JobOffersContainer[i].id === JobOfferID){
+                    JobOffer = JobOffersContainer[i];
+                    break;
+                }
+            }
+            Applicant.ApplyForJob(JobOffer);
+        });
     };
 };
 ConstructTableApplicants();
