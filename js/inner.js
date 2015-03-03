@@ -36,18 +36,6 @@ window.addEventListener("load", function(){
 
     };
 
-	 var formRow = JobApplicants.insertRow(JobApplicants.rows.length);
-            /*var formCell = formRow.insertCell(-1);
-            var createForm = document.createElement('form');
-            createForm.setAttribute("method", 'post');
-            var input = document.createElement('input');
-            input.setAttribute("type", 'text');
-            input.setAttribute("name", "username");
-            var submitButton = document.createElement("button");
-            submitButton.setAttribute("type", 'button');
-            submitButton.setAttribute("value", 'Add New Applicant');
-            formRow.appendChild(createForm);*/
-        
 	for (var i=0; i<ApplicantsContainer.length;i++ ) {
 		var addRow = JobApplicants.insertRow(-1);
 		var nameCell = addRow.insertCell(-1);
@@ -58,8 +46,8 @@ window.addEventListener("load", function(){
 		experienceCell.innerHTML = ApplicantsContainer[i].experience;
         var buttonCell = addRow.insertCell(-1);
         var button = document.createElement("button");
-        button.setAttribute("class", "btn btn-info");
-        button.textContent = "Click to Remove";
+        button.setAttribute("class", 'btn btn-info');
+        button.textContent = "X";
         buttonCell.appendChild(button);
         button.ApplicantID = ApplicantsContainer[i].id;
         button.addEventListener("click", function(){
