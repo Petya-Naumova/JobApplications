@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+   <head>
+      <meta charset="utf-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge">
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <title>Job Applications</title>
+      <!-- Bootstrap -->
+      <link href="css/bootstrap.min.css" rel="stylesheet">
+      <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+      <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+      <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+      <![endif]-->
+   </head>
+   <body>
+      <div>
+         <div style="width: 600px; margin: 0 auto; margin-bottom: 2%;"><h1>Applicants</h1></div>
+         <table id="JobApplicants" style="width: 600px; margin: 0 auto;" class="table table-bordered table-hover">
+               <tr class="active">
+                  <th>Name</th>
+                  <th>Email</th>
+                  <th>Experience</th>
+                  <th>Remove</th>
+               </tr>
+               
+         </table>
+         
+      </div>
+
+      <div style="width: 600px; margin: 0 auto; maring-top: 10%;">
+         <h2>Choose an applicant:</h2>
+         <select class="form-control" id="applicantDropDown">
+            
+         </select>
+      </div>      
+
+      <div style="margin-top: 5%; margin-bottom: 10%;">
+         <div style="width: 600px; margin: 0 auto; margin-bottom: 2%;"><h1>Job Applications</h1><h4 id="systemMessage" style="color: red;"></h4></div>
+         <table id="JobOffersList" style="width: 600px; margin: 0 auto;" class="table table-bordered table-hover">
+               <tr class="active">
+                  <th>Title</th>
+                  <th>Description</th>
+                  <th>Requirements</th>
+                  <th>Address</th>
+                  <th>Apply for the position</th>
+               </tr>
+               
+         </table>
+         
+      </div>
+      <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+      <!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>-->
+      <!-- Include all compiled plugins (below), or include individual files as needed -->
+      <script src="js/inner.js"></script>
+   </body>
+</html>
